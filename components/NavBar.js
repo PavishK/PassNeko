@@ -23,7 +23,7 @@ export default function NavBar() {
         ):(
         <XIcon size={30} className='sm:hidden block' onClick={()=>setToggleMenu(prev=>!prev)}/>
         )}
-        <div className={`absolute top-5.5 right-14 bg-gray-100 p-6 w-40 border rounded-lg sm:hidden block
+        <div className={`absolute z-[1000] top-5.5 right-14 bg-gray-100 p-6 w-40 border rounded-lg sm:hidden block
         ${toggleMenu?'block':'hidden'}
         `}>
             <ul className={`items-center justify-center flex-col gap-y-6 flex`}>

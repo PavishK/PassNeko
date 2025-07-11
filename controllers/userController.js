@@ -50,5 +50,5 @@ export const verifySession=async(token)=>{
     
     if(!state)
         return {status:401,data:{message:"Session expired"}};
-    return {status:200,data:{message:"Valid session",date:state}};
+    return {status:200,data:{message:"Valid session",data:state}};
 }

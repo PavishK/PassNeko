@@ -74,7 +74,7 @@ export default function Home() {
       <NavBar/>
       {/* HOME BODY */}
       <div className="bg-gray-100 h-screen w-full flex items-center justify-center flex-col">
-      <div className="flex items-center justify-normal flex-col -mt-36 sm:-mt-28">
+      <div className="flex items-center justify-normal flex-col -mt-28 sm:-mt-28">
       <MotionDiv
       drag
       initial={{ opacity: 0, x: 200 }}
