@@ -93,6 +93,7 @@ export default function Dashboard() {
             await axios.post("/api/manage_wallet",{token:get(),...data});
             setWallets([...wallets,data]);
             toast.success("New wallet added!");
+            getWallets();
         } catch (error) {
             toast.error("Unable to add wallet!");
         } finally {
@@ -107,6 +108,7 @@ export default function Dashboard() {
             await axios.put("/api/manage_wallet/",{token:get(),...data.data});
             wallets[data.index]=data.data;
             toast.success("Wallet updated successfully!");
+            getWallets();
         } catch (error) {
             toast.error("Unable to update wallet!");
         } finally {
@@ -127,6 +129,7 @@ export default function Dashboard() {
             await axios.delete(`/api/manage_wallet/${id}`);
             setWallets(wallets.filter((_,i)=>i!=deleteData.index));
             toast.success("Wallet deleted successfully!");
+            getWallets();
         } catch (error) {
             toast.error("Unable to delete wallet!");
         } finally {
