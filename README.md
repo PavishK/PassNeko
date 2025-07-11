@@ -76,7 +76,10 @@ README.md
 
 ## 📸 Screenshots
 
-*Add your app screenshots here to showcase the UI.*
+<img width="1913" height="818" alt="image" src="https://github.com/user-attachments/assets/8d334cde-b096-436d-93c1-a74cb546c0d0" />
+<img width="1914" height="908" alt="image" src="https://github.com/user-attachments/assets/4e9954ab-513a-4f52-b85f-f933bb7d23e9" />
+
+
 
 ## 📄 License
 
@@ -86,9 +89,4 @@ This project is licensed under the [MY License](LICENSE).
 
 Made with ❤️ by **Pavish K.**
 
-```
-
----
-
-Let me know if you'd like to generate a downloadable `README.md` file or if you want to add badges, deploy instructions, or database schema info.
 ```
