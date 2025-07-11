@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🐾 NekoPass - Simple & Secure Password Manager
 
-## Getting Started
+NekoPass is a minimal, secure, and user-friendly password manager built with modern web technologies. It helps users securely store, manage, and retrieve passwords with encryption — even **we** can't see them!
 
-First, run the development server:
+## 🔐 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 💾 Save and manage all your passwords manually
+- 🔑 All data is encrypted using bcrypt and crypto-js for maximum security
+- 🔒 No one (not even us) can view your passwords
+- 🌐 Responsive design and clean UI
+- 📦 Built with **Next.js**, **Tailwind CSS**, and **MySQL**
+
+## 📁 Project Structure
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+/app
+├── api
+│   └── user/\[id]/route.js
+└── components
+└── Loading.js
+/lib
+└── db.js
+/public
+└── favicon.ico
+/pages
+└── index.js
+.env.local
+README.md
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+````
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Setup & Installation
 
-## Learn More
+1. **Clone the repository**:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/your-username/nekopass.git
+   cd nekopass
+````
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Configure environment variables** by creating a `.env.local` file:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```env
+   DB_USER=your_mysql_user
+   DB_PASSWORD=your_mysql_password
+   DB_NAME=nekopass
+   NEXT_PUBLIC_API_URL=http://localhost:3000
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Run the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+## 🧠 Tech Stack
+
+* **Next.js** – React framework for SSR and API routes
+* **MySQL** – Relational database for storing data
+* **Bcrypt.js** – Secure password hashing
+* **Tailwind CSS** – Utility-first CSS framework
+* **Axios** – For making HTTP requests
+
+## 🚨 Important Notes
+
+* Passwords are encrypted and cannot be decrypted.
+* Keep `.env.local` secure and do not commit it to GitHub.
+* Never expose sensitive data like API keys in the frontend.
+
+## 📸 Screenshots
+
+*Add your app screenshots here to showcase the UI.*
+
+## 📄 License
+
+This project is licensed under the [MY License](LICENSE).
+
+---
+
+Made with ❤️ by **Pavish K.**
+
+```
+
+---
+
+Let me know if you'd like to generate a downloadable `README.md` file or if you want to add badges, deploy instructions, or database schema info.
+```

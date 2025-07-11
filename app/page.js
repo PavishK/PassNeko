@@ -1,103 +1,127 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation.js";
+import { useRouter } from "next/navigation.js";
 import Image from "next/image";
+import NavBar from "@/components/NavBar";
+import {
+  ArrowRightCircle,
+  ArrowRight,
+  XIcon,
+  X
+} from 'lucide-react';
+import { get, remove } from "@/services/store.js";
+import Login from './login/page.js';
+import axios from "axios";
+import toast from "react-hot-toast";
+import { setRandomFallback } from "bcryptjs";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const router=useRouter();
+  const [MotionDiv,setMotionDiv]=useState();
+  const [isLoggedIn,setIsLoggedIn]=useState(false);
+  const [showPopup,setShowPopup]=useState(false);
+
+  const pathName=usePathname();
+
+  const verifyToken=async(token)=>{
+    try {
+      await axios.post("/api/session_verify",{token});
+      setIsLoggedIn(true);
+    } catch (error) {
+      toast.error("Session expired!");
+      setIsLoggedIn(false);
+      remove();
+    }
+  }
+
+  useEffect(()=>{
+    const token=get();
+    if(token===false)
+      setIsLoggedIn(false);
+    else{
+      setIsLoggedIn(true);
+      verifyToken(token);
+    }
+  },[pathName])
+
+  useEffect(()=>{
+
+    const token=get();
+    setIsLoggedIn(token===false?false:true);
+
+    import('framer-motion').then((mod)=>{
+      setMotionDiv(()=>mod.motion.div);
+    });
+  },[showPopup]);
+
+  if(!MotionDiv) return null;
+
+  const moveToDashboard=()=>{
+    if(isLoggedIn){
+      router.push('/dashboard');
+    }
+    else{
+      toast.error("Please login to continue");
+      router.refresh();
+    }
+  }
+
+  return (
+    <div className="flex items-center justify-normal flex-col w-full">
+      <NavBar/>
+      {/* HOME BODY */}
+      <div className="bg-gray-100 h-screen w-full flex items-center justify-center flex-col">
+      <div className="flex items-center justify-normal flex-col -mt-36 sm:-mt-28">
+      <MotionDiv
+      drag
+      initial={{ opacity: 0, x: 200 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}>
+        <Image src={"/cat_logo.png"} alt="PassCat" width={250} height={200} style={{width:'auto',height:'200'}}/>
+    </MotionDiv>
+        <h1 className="text-3xl font-bold">PassNeko</h1>
+      </div>
+      <div className="sm:w-[60vw] px-3.5 mt-6 text-center text-gray-700">
+        <p>PassNeko is a simple and secure password manager that helps you manually store and manage your passwords in one safe place. 
+        Every password you save is encrypted with advanced security, ensuring that only you can access your data — not even we can see it. Designed for privacy and ease of use, 
+        PassNeko lets you keep track of your login details without worrying about security risks. With clean design, encrypted storage, and full user control, 
+        PassNeko is the safest way to manage your passwords manually and privately.</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      {!isLoggedIn?(
+      <button className="flex cursor-pointer items-center justify-normal gap-x-3 bg-black mt-6 p-2 text-xl rounded-lg transition-transform hover:scale-105 w-40 text-white font-semibold"
+      onClick={()=>setShowPopup(true)}>
+      Get Started 
+      <ArrowRightCircle/>
+      </button>
+      ):(
+      <button className="flex items-center cursor-pointer justify-center gap-x-3 bg-black mt-6 p-2 text-xl rounded-lg transition-transform hover:scale-105 w-40 text-white font-semibold"
+      onClick={moveToDashboard}>
+      Dashboard 
+      <ArrowRight/>
+      </button>      
+      )}
+      </div>
+
+      {showPopup && (
+        <MotionDiv
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{duration:0.4}}
+         className="fixed top-0 left-0 z-[1000] w-screen h-screen flex items-start justify-center bg-white/60">
+          <div className="top-44 w-[90%] max-w-md bg-white rounded-tr-2xl rounded-lg p-4 shadow-lg relative">
+          <div className="absolute right-0 top-0 text-white cursor-pointer font-bold bg-black rounded-tr-2xl">
+            <XIcon size={30} onClick={()=>setShowPopup(false)} className="p-1"/>
+          </div>
+          <div>
+            <Login closePopup={()=>setShowPopup(false)}/>
+          </div>
+          </div>
+        </MotionDiv>
+      )}
     </div>
   );
 }
