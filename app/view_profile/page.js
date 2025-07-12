@@ -7,7 +7,6 @@ import {
     ArrowLeft,
     LucideView,
     MailIcon,
-    User2
 } from 'lucide-react';
 import toast from "react-hot-toast";
 import DashboardN from "@/components/DashboardN";
@@ -58,7 +57,7 @@ export default function View_Profile() {
             <MailIcon size={30}/>
             USERID
         </div>
-        <div className="border px-2 p-2 rounded-lg w-full sm:w-72 mt-2 text-xl">{userData.email}</div>
+        <div className="border px-2 bg-white p-2 rounded-lg w-full sm:w-72 mt-2 text-xl">{userData.email}</div>
     </div>
         </div>
         <div className="flex items-center justify-normal flex-col w-full fixed bottom-2 text-lg font-semibold px-2 border-t">

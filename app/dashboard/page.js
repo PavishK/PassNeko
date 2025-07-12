@@ -155,7 +155,7 @@ export default function Dashboard() {
 
 
 
-    },[router, sessionCheck]);
+    },[]);
 
     if(!MotionDiv) return null;
 
