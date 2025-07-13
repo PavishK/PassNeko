@@ -16,6 +16,7 @@ import Login from './login/page.js';
 import axios from "axios";
 import toast from "react-hot-toast";
 import { setRandomFallback } from "bcryptjs";
+import Loading from "@/components/Loading.js";
 
 export default function Home() {
 
@@ -23,7 +24,7 @@ export default function Home() {
   const [MotionDiv,setMotionDiv]=useState();
   const [isLoggedIn,setIsLoggedIn]=useState(false);
   const [showPopup,setShowPopup]=useState(false);
-
+  const [makeLoading,setMakeLoading]=useState(true);
   const pathName=usePathname();
 
   const verifyToken=async(token)=>{
@@ -36,6 +37,12 @@ export default function Home() {
       remove();
     }
   }
+
+  useEffect(()=>{
+    const timer=setTimeout(()=>setMakeLoading(false),2000);
+
+    return ()=>clearTimeout(timer);
+  },[])
 
   useEffect(()=>{
     const token=get();
@@ -122,6 +129,8 @@ export default function Home() {
           </div>
         </MotionDiv>
       )}
+
+      <Loading isLoading={makeLoading}/>
     </div>
   );
 }
