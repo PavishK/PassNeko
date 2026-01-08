@@ -3,7 +3,7 @@
 import { useState } from "react";
 import SignUp from '../signup/page.js';
 import axios from "axios";
-import { set } from "@/services/store";
+import { set } from "@/services/store.js";
 import {toast} from 'react-hot-toast';
 import Loading from "@/components/Loading.js";
 
