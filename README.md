@@ -189,4 +189,4 @@ Personal Project | Full-Stack Developer
 
 ## 📜 License
 
-This project is licensed under the **MY License**.
+This project is licensed under **MY License**.
