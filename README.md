@@ -128,8 +128,8 @@ DB_PORT=
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/nekopass.git
-cd nekopass
+git clone https://github.com/PavishK/PassNeko.git
+cd PassNeko
 ```
 
 ### 2️⃣ Install Dependencies
