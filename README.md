@@ -1,92 +1,192 @@
-# 🐾 NekoPass - Simple & Secure Password Manager
+# 🔐 NekoPass – Simple & Secure Password Manager
 
-NekoPass is a minimal, secure, and user-friendly password manager built with modern web technologies. It helps users securely store, manage, and retrieve passwords with encryption — even **we** can't see them!
+**NekoPass** is a modern, secure, and minimal **password manager web application** designed to help users safely store, manage, and access their credentials.
 
-## 🔐 Features
+This project focuses heavily on **security best practices**, **encryption**, and a **clean user experience**.  
+Built as a **personal project** to gain real-world experience with authentication, encryption, and full-stack development.
 
-- 💾 Save and manage all your passwords manually
-- 🔑 All data is encrypted using bcrypt and crypto-js for maximum security
-- 🔒 No one (not even us) can view your passwords
-- 🌐 Responsive design and clean UI
-- 📦 Built with **Next.js**, **Tailwind CSS**, and **MySQL**
-
-## 📁 Project Structure
-
-```
-
-/app
-├── api
-│   └── user/\[id]/route.js
-└── components
-└── Loading.js
-/lib
-└── db.js
-/public
-└── favicon.ico
-/pages
-└── index.js
-.env.local
-README.md
-
-````
-
-## ⚙️ Setup & Installation
-
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/your-username/nekopass.git
-   cd nekopass
-````
-
-2. **Install dependencies**:
-
-   ```bash
-   npm install
-   ```
-
-3. **Configure environment variables** by creating a `.env.local` file:
-
-   ```env
-   DB_USER=your_mysql_user
-   DB_PASSWORD=your_mysql_password
-   DB_NAME=nekopass
-   NEXT_PUBLIC_API_URL=http://localhost:3000
-   ```
-
-4. **Run the development server**:
-
-   ```bash
-   npm run dev
-   ```
-
-## 🧠 Tech Stack
-
-* **Next.js** – React framework for SSR and API routes
-* **MySQL** – Relational database for storing data
-* **Bcrypt.js** – Secure password hashing
-* **Tailwind CSS** – Utility-first CSS framework
-* **Axios** – For making HTTP requests
-
-## 🚨 Important Notes
-
-* Passwords are encrypted and cannot be decrypted.
-* Keep `.env.local` secure and do not commit it to GitHub.
-* Never expose sensitive data like API keys in the frontend.
-
-## 📸 Screenshots
-
-<img width="1913" height="818" alt="image" src="https://github.com/user-attachments/assets/8d334cde-b096-436d-93c1-a74cb546c0d0" />
-<img width="1914" height="908" alt="image" src="https://github.com/user-attachments/assets/4e9954ab-513a-4f52-b85f-f933bb7d23e9" />
-
-
-
-## 📄 License
-
-This project is licensed under the [MY License](LICENSE).
+🌐 **Live Demo:** https://pass-neko.vercel.app/
 
 ---
 
-Made with ❤️ by **Pavish K.**
+## ✨ Features
+
+- 🔐 Secure password storage with encryption
+- 🔑 JWT-based authentication
+- 🔒 Password hashing using **bcryptjs**
+- 🧠 Client-side encryption using **crypto-js**
+- 📋 One-click copy password
+- ✏️ Edit stored credentials
+- 🗑️ Delete passwords securely
+- 👤 User profile management
+- 📱 Fully responsive design
+- ⚡ Fast UI with Tailwind CSS
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|----------|---------|
+| **Next.js** | Full-stack framework (Frontend + API Routes) |
+| **MySQL** | Database |
+| **Tailwind CSS** | Styling |
+| **JWT** | Authentication |
+| **bcryptjs** | Password hashing |
+| **crypto-js** | Encryption |
+| **Vercel** | Deployment |
+
+---
+
+## 🏠 Home Page
+
+![Home Page](https://github.com/user-attachments/assets/48f79c25-a535-4b66-bfa2-8e0aca09205d)
+
+---
+
+## 🔐 Authentication
+
+### Login
+![Login](https://github.com/user-attachments/assets/ef30e3b0-6548-4239-9379-f0558ee01481)
+
+### Register
+![Register](https://github.com/user-attachments/assets/a1982290-2308-4ea5-a21d-1c0060112187)
+
+---
+
+## 📊 Dashboard
+
+View and manage all your saved credentials in one secure place.
+
+![Dashboard](https://github.com/user-attachments/assets/2c080a50-f5a7-4da5-896d-37e0553494a7)
+
+---
+
+## ➕ Add New Password
+
+Securely store new website credentials with encryption.
+
+![Add Password](https://github.com/user-attachments/assets/1b81e1f6-6042-4c74-b04e-269a12406b88)
+
+---
+
+## 🛠️ Manage Passwords
+
+- ✏️ Edit credentials  
+- 📋 Copy passwords  
+- 🗑️ Delete entries securely  
+
+![Manage Passwords](https://github.com/user-attachments/assets/ddba41fa-dfb0-45d7-b041-53fb39acaa33)
+
+---
+
+## 👤 Profile Page
+
+Manage user account information securely.
+
+![Profile](https://github.com/user-attachments/assets/4ac9e217-54b5-4fb1-9fee-ed033ce01092)
+
+---
+
+## 🔒 Security Highlights
+
+- 🔐 Passwords are **never stored in plain text**
+- 🧠 Encrypted using **AES encryption**
+- 🔑 User passwords hashed with **bcryptjs**
+- 🛡️ API routes protected using **JWT**
+- 👥 Users can access **only their own data**
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file in the project root and add the following variables:
+
+```env
+SALT=
+WALLET_SALT=
+STORE_KEY=
+SERVER_API=
+
+JWT_SECRET=
+MASTER_KEY=
+
+DB_NAME=
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_PORT=
+````
+
+> ⚠️ **Never expose real environment values in public repositories**
+> `.env` files must be added to `.gitignore`
+
+---
+
+## 📦 Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/your-username/nekopass.git
+cd nekopass
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Run the Application
+
+```bash
+npm run dev
+```
+
+Open in browser:
 
 ```
+http://localhost:3000
+```
+
+---
+
+## ☁️ Deployment (Vercel)
+
+1. Push code to GitHub
+2. Go to **Vercel Dashboard**
+3. Import the repository
+4. Add environment variables in:
+
+   ```
+   Project Settings → Environment Variables
+   ```
+5. Deploy 🚀
+
+---
+
+## 🎯 Project Purpose
+
+This **personal project** was built to:
+
+* Learn **secure authentication**
+* Implement **encryption & hashing**
+* Practice **Next.js full-stack development**
+* Work with **MySQL in production**
+* Build a **real-world security-focused application**
+
+---
+
+## 🧑‍💻 Author
+
+**Pavish K**
+Personal Project | Full-Stack Developer
+
+⭐ If you like this project, consider giving it a star!
+
+---
+
+## 📜 License
+
+This project is licensed under the **MY License**.
